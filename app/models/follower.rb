@@ -38,6 +38,16 @@ class Follower
         @@all.max_by{|follower| follower.cults.count}
     end
 
+    def fellow_cult_members
+        fellow_members = []
+        Cult.all.map do |cult|
+            if cult.followers.include?(self) == true
+                cult.followers.each {|follower| fellow_members << follower }
+            end
+        end
+        fellow_members.uniq
+    end
+
 
 
 

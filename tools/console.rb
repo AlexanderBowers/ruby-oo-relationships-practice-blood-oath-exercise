@@ -17,6 +17,7 @@ c3 = Cult.new("Green", "Michigan", 2015, "cool")
 
 c1.recruit_follower(f1)
 c1.recruit_follower(f2)
+c2.minimum_age = 10
 c2.recruit_follower(f3)
 c2.recruit_follower(f2)
 c2.recruit_follower(f1)

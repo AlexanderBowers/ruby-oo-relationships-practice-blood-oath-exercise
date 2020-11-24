@@ -2,6 +2,7 @@ require 'pry'
 class Cult
     @@all = []
     attr_reader :name, :location, :founding_year, :slogan
+    attr_accessor :minimum_age
 
     def initialize(name, location, founding_year, slogan)
         @name = name
@@ -9,6 +10,8 @@ class Cult
         @founding_year = founding_year
         @slogan = slogan
         @@all << self
+        minimum_age = 0
+        @minimum_age = minimum_age
     end
 
     def bloodoaths
@@ -17,7 +20,7 @@ class Cult
 
 
     def recruit_follower(follower)
-        BloodOath.new(follower, self)
+      follower.age >= self.minimum_age ? BloodOath.new(follower, self) : "Sorry, you are not old enough to join this cult."
     end
 
     def followers
@@ -68,6 +71,5 @@ class Cult
         end
         locations.max_by {|location, cults| cults}.first
     end
-
 
 end
